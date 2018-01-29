@@ -16,8 +16,11 @@ public class Main {
         //output the list of absences.
         System.out.println("The Elements Are: " + absences);
 
-    }
+        int perfAttendance = perfectAttendance(absences);
+        //output How many students had perfect attendance
+        System.out.println("Students with Perfect Attendance: " + perfAttendance);
 
+    }
 
     private static ArrayList<Integer> listOfAbsences(String userName) {
 
@@ -28,6 +31,17 @@ public class Main {
             absencesList.add(random.nextInt(10) - 1);
         }
         return absencesList;
+    }
+
+    //calculate How many students had perfect attendance
+    private static int perfectAttendance(ArrayList absences) {
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i).equals(0)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
 
