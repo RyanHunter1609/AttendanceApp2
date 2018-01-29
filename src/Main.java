@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //Read the user's [name] from stdin and output it as the app's welcome message.
+        System.out.println("hello world!");
         System.out.println("Welcome to Attendance App!");
 
         Scanner scanner = new Scanner(System.in);
