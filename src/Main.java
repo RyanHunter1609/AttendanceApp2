@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //Read the user's [name] from stdin and output it as the app's welcome message.
-        System.out.println("hello world!");
         System.out.println("Welcome to Attendance App!");
 
         Scanner scanner = new Scanner(System.in);
@@ -25,6 +24,17 @@ public class Main {
         //output average number of absences
         System.out.println("Average Number of Absences: " + absenceAvg);
 
+        int threeAndPerf = fewerThanThreeAndPerfect(absences, perfAttendance);
+        //output students who had fewer than 3 absences also had perfect attendance
+        System.out.println("students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
+    }
+
+    private static int fewerThanThreeAndPerfect(ArrayList absences, int perfAttendance) {
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+
+        }
+        return count;
     }
 
     private static double averageOfAbsences(ArrayList absences) {
