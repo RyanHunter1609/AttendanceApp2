@@ -24,15 +24,19 @@ public class Main {
         //output average number of absences
         System.out.println("Average Number of Absences: " + absenceAvg);
 
-        int threeAndPerf = fewerThanThreeAndPerfect(absences, perfAttendance);
+        int threeAndPerf = fewerThanThreeAndPerfect(absences);
         //output students who had fewer than 3 absences also had perfect attendance
-        System.out.println("students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
+        System.out.println("Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
     }
 
-    private static int fewerThanThreeAndPerfect(ArrayList absences, int perfAttendance) {
+    private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences) {
         int count = 0;
+
         for (int i = 0; i < absences.size(); i++) {
 
+            if (absences.get(i) < 3 && absences.get(i).equals(0)) {
+                count++;
+            }
         }
         return count;
     }
@@ -57,7 +61,7 @@ public class Main {
         ArrayList<Integer> absencesList = new ArrayList<>(userName.length());
         Random random = new Random();
         for (int i = 0; i < userName.length(); i++) {
-            absencesList.add(random.nextInt(10) - 1);
+            absencesList.add(random.nextInt(10));
         }
         return absencesList;
     }
