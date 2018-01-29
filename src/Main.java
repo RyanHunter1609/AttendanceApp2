@@ -27,6 +27,22 @@ public class Main {
         int threeAndPerf = fewerThanThreeAndPerfect(absences);
         //output students who had fewer than 3 absences also had perfect attendance
         System.out.println("Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
+
+        System.out.println("Enter a Number: ");
+        int number = scanner.nextInt();
+        int numOfAbs = specificNumOfAbs(absences, number);
+        System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
+    }
+
+    private static int specificNumOfAbs(ArrayList<Integer> absences, int number) {
+        // the index(es) of the students who had a specified number of absences.
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (number == absences.get(i)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences) {
