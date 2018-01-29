@@ -20,6 +20,24 @@ public class Main {
         //output How many students had perfect attendance
         System.out.println("Students with Perfect Attendance: " + perfAttendance);
 
+        double absenceAvg = averageOfAbsences(absences);
+        //output average number of absences
+        System.out.println("Average Number of Absences: " + absenceAvg);
+
+    }
+
+    private static double averageOfAbsences(ArrayList absences) {
+        //average = the elements added up, then divide by absences.size()
+        Integer avg = 0;
+        if (!absences.isEmpty()) {
+            for (int i = 0; i < absences.size(); i++) {
+                avg += i;
+            }
+            return avg.doubleValue() / absences.size();
+        }
+
+
+        return avg;
     }
 
     private static ArrayList<Integer> listOfAbsences(String userName) {
@@ -43,5 +61,7 @@ public class Main {
         }
         return count;
     }
+
+    //the average of all the absences
 }
 
