@@ -32,10 +32,43 @@ public class Main {
         int number = scanner.nextInt();
         int numOfAbs = specificNumOfAbs(absences, number);
         System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
+
+        int moreThanTwice = AbsentMoreThanTwice(absences);
+        //output students Absent more than Twice the Times the Course Meets
+        System.out.println("Student(s) Absent more than Twice the Times the Course Meets: " + moreThanTwice);
+        //output percent of students who FE'd
+        double percentFEd = percentOfStudentsFEd(absences, moreThanTwice);
+        System.out.println("Percent of Student(s) FE'd: " + percentFEd);
+
+
     }
 
+    // the percentage of students who have FE'd the course.
+    private static double percentOfStudentsFEd(ArrayList<Integer> absences, int moreThanTwice) {
+        double qoutient = moreThanTwice / absences.size();
+        return qoutient;
+    }
+
+    //what percentage of the students have FE'd the course
+    private static int AbsentMoreThanTwice(ArrayList<Integer> absences) {
+        //the index(es) of the student(s) who were absent more than twice the number of times the course meets per week.
+        /** english explanation
+         *
+         *
+         * **/
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            int product = absences.size() * 2;
+            if (absences.get(i) >= product) {
+                count += i;
+            }
+        }
+        return count;
+    }
+
+
+    // the index(es) of the students who had a specified number of absences.
     private static int specificNumOfAbs(ArrayList<Integer> absences, int number) {
-        // the index(es) of the students who had a specified number of absences.
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
             if (number == absences.get(i)) {
@@ -45,6 +78,7 @@ public class Main {
         return count;
     }
 
+    //calculate students who had fewer than 3 absences also had perfect attendance
     private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences) {
         int count = 0;
 
@@ -57,6 +91,7 @@ public class Main {
         return count;
     }
 
+    //calculate the average of the absences
     private static double averageOfAbsences(ArrayList absences) {
         //average = the elements added up, then divide by absences.size()
         Integer avg = 0;
@@ -71,9 +106,9 @@ public class Main {
         return avg;
     }
 
+    //Create and array list of absences
     private static ArrayList<Integer> listOfAbsences(String userName) {
 
-        //Create and array list of absences
         ArrayList<Integer> absencesList = new ArrayList<>(userName.length());
         Random random = new Random();
         for (int i = 0; i < userName.length(); i++) {
@@ -93,6 +128,6 @@ public class Main {
         return count;
     }
 
-    //the average of all the absences
+
 }
 
