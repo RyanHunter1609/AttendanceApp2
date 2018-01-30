@@ -40,7 +40,16 @@ public class Main {
         double percentFEd = percentOfStudentsFEd(absences, moreThanTwice);
         System.out.println("Percent of Student(s) FE'd: " + percentFEd);
 
+        //What is the average of only the non-FE'd absences?
+        double avgAbsOfNon = averageOfNonFEdAbsences(absences, moreThanTwice);
 
+
+    }
+
+    private static double averageOfNonFEdAbsences(ArrayList<Integer> absences, int moreThanTwice) {
+        int avg = 0;
+        if (!absences.isEmpty() && !absences == moreThanTwice)
+            return 0;
     }
 
     // the percentage of students who have FE'd the course.
