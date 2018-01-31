@@ -40,16 +40,48 @@ public class Main {
         double percentFEd = percentOfStudentsFEd(absences, moreThanTwice);
         System.out.println("Percent of Student(s) FE'd: " + percentFEd);
 
-        //What is the average of only the non-FE'd absences?
-        double avgAbsOfNon = averageOfNonFEdAbsences(absences, moreThanTwice);
+        double avgAbsOfNon = averageOfNonFEdAbsences(absences);
+        System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
+
+
+        addTheAbsences(absences, int index);
 
 
     }
 
-    private static double averageOfNonFEdAbsences(ArrayList<Integer> absences, int moreThanTwice) {
-        int avg = 0;
-        if (!absences.isEmpty() && !absences == moreThanTwice)
-            return 0;
+    //As a user, I need to be able to change the absences in the ArrayList.
+    private static void addTheAbsences(ArrayList<Integer> absences, int index) {
+        // X is a positive, negative, or even zero integer.
+        // Y can be any integer too.
+        // No absence should be less than zero or more than 15 after performing this calculation.
+        // If an absence would be negative, set it to zero. If an absence would be more than 15, set it to 15.
+        int num;
+        if (index < 0 || index > 15) {
+            if (index <= num)
+        }
+        int[] array = new int[absences.size()];
+        //add the element to get the resizing
+        addTheAbsences(absences, index);
+        //shift other elements
+        for (int i = absences.size(); i < index; i--) {
+            array[i] = array[i - 1];
+        }
+        //put new num in right place
+        array[index] = absences;
+    }
+
+    //What is the average of only the non-FE'd absences?
+    private static double averageOfNonFEdAbsences(ArrayList<Integer> absences) {
+        Integer avg = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (!absences.isEmpty() && absences.get(i) < 6) {
+                for (int j = 0; j < absences.size(); j++) {
+                    avg += j;
+                }
+                return avg.doubleValue() / absences.size();
+            }
+        }
+        return avg;
     }
 
     // the percentage of students who have FE'd the course.
@@ -110,8 +142,6 @@ public class Main {
             }
             return avg.doubleValue() / absences.size();
         }
-
-
         return avg;
     }
 
