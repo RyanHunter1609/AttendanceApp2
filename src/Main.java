@@ -60,7 +60,23 @@ public class Main {
         Set<Integer> unique = returnUniqueValues(absences);
         System.out.println("The Set of Unique Elements: " + unique);
 
+        elementShuffle(absences);
+        System.out.println("The Shuffled Elements are: " + absences);
 
+
+    }
+
+    //Sort the absences using a user-defined sort function.
+    private static void elementShuffle(ArrayList<Integer> absences) {
+        for (int i = 0; i < absences.size(); i++) {
+            for (int j = 0; j < absences.size(); j++) {
+                if (absences.get(i) > absences.get(j)) {
+                    //.set(int index, Integer element)
+                    absences.set(i, absences.get(j));
+                    absences.set(j, absences.get(i));
+                }
+            }
+        }
     }
 
     private static Set<Integer> returnUniqueValues(ArrayList<Integer> absences) {
