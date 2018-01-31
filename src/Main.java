@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -60,16 +57,28 @@ public class Main {
         //output shuffled elements
         System.out.println("Shuffled Elements: " + shuffle);
 
+        Set<Integer> unique = returnUniqueValues(absences);
+        System.out.println("The Set of Unique Elements: " + unique);
+
+
     }
 
-    private static ArrayList<Integer> shuffleElements(ArrayList absences) {
+    private static Set<Integer> returnUniqueValues(ArrayList<Integer> absences) {
+        Set<Integer> storeUVals = new HashSet<>();
+        for (int i = 0; i < absences.size(); i++) {
+            storeUVals.add(absences.get(i));
+        }
+        return storeUVals;
+    }
+
+    private static ArrayList<Integer> shuffleElements(ArrayList<Integer> absences) {
         ArrayList<Integer> shuffleArray = new ArrayList<>();
         shuffleArray = absences;
         Collections.shuffle(shuffleArray);
         return shuffleArray;
     }
 
-    private static ArrayList<Integer> sortElements(ArrayList absences) {
+    private static ArrayList<Integer> sortElements(ArrayList<Integer> absences) {
         ArrayList<Integer> sortArray = new ArrayList<>();
         sortArray = absences;
         Collections.sort(sortArray);
