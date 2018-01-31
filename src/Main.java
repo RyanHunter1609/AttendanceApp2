@@ -63,11 +63,14 @@ public class Main {
         elementShuffle(absences);
         System.out.println("The Shuffled Elements are: " + absences);
 
+        elementSort(absences);
+        System.out.println("The Sorted Elements are: " + absences);
+
 
     }
 
     //Sort the absences using a user-defined sort function.
-    private static void elementShuffle(ArrayList<Integer> absences) {
+    private static void elementSort(ArrayList<Integer> absences) {
         for (int i = 0; i < absences.size(); i++) {
             for (int j = 0; j < absences.size(); j++) {
                 if (absences.get(i) > absences.get(j)) {
@@ -76,6 +79,14 @@ public class Main {
                     absences.set(j, absences.get(i));
                 }
             }
+        }
+    }
+
+    //Shuffle the absences using a user-defined shuffle() function.
+    private static void elementShuffle(ArrayList<Integer> absences) {
+        Random random = new Random();
+        for (int i = 0; i < absences.size(); i++) {
+            absences.set(random.nextInt(absences.size()), i);
         }
     }
 
