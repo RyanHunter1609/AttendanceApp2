@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class Main {
         //output average number of absences
         System.out.println("Average Number of Absences: " + absenceAvg);
 
-        int threeAndPerf = fewerThanThreeAndPerfect(absences);
+        int threeAndPerf = fewerThanThreeAndPerfect(absences, perfAttendance);
         //output students who had fewer than 3 absences also had perfect attendance
         System.out.println("Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
 
@@ -43,31 +44,61 @@ public class Main {
         double avgAbsOfNon = averageOfNonFEdAbsences(absences);
         System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
 
+        System.out.println("What Number Would You Like to Add? ");
+        int newNum = scanner.nextInt();
 
-        addTheAbsences(absences, int index);
+        System.out.println("Add " + newNum + " at Which Index?");
+        int index = scanner.nextInt();
+        ArrayList<Integer> addAbs = addTheAbsences(absences, newNum, index);
+        System.out.println("Your New List of Elements: " + addAbs);
 
+        ArrayList<Integer> sort = sortElements(absences);
+        //output sorted elements
+        System.out.println("Sorted Elements: " + sort);
+
+        ArrayList<Integer> shuffle = shuffleElements(absences);
+        //output shuffled elements
+        System.out.println("Shuffled Elements: " + shuffle);
 
     }
 
+    private static ArrayList<Integer> shuffleElements(ArrayList absences) {
+        ArrayList<Integer> shuffleArray = new ArrayList<>();
+        shuffleArray = absences;
+        Collections.shuffle(shuffleArray);
+        return shuffleArray;
+    }
+
+    private static ArrayList<Integer> sortElements(ArrayList absences) {
+        ArrayList<Integer> sortArray = new ArrayList<>();
+        sortArray = absences;
+        Collections.sort(sortArray);
+        return sortArray;
+    }
+
     //As a user, I need to be able to change the absences in the ArrayList.
-    private static void addTheAbsences(ArrayList<Integer> absences, int index) {
+    private static ArrayList<Integer> addTheAbsences(ArrayList<Integer> absences, int newNum, int index) {
         // X is a positive, negative, or even zero integer.
         // Y can be any integer too.
         // No absence should be less than zero or more than 15 after performing this calculation.
         // If an absence would be negative, set it to zero. If an absence would be more than 15, set it to 15.
-        int num;
-        if (index < 0 || index > 15) {
-            if (index <= num)
+        ArrayList<Integer> addAbsArrayList = new ArrayList<>();
+        addAbsArrayList = absences;
+        for (int i = 0; i < addAbsArrayList.size(); i++) {
+            if (addAbsArrayList.get(i) > index) {
+                //create new variable b/c you're getting a new number
+                int newSpot = addAbsArrayList.get(i) + newNum;
+                //set new number to i
+                addAbsArrayList.set(i, newSpot);
+            }
+            if (addAbsArrayList.get(i) < 0) {
+                addAbsArrayList.set(i, 0);
+            }
+            if (addAbsArrayList.get(i) > 15) {
+                addAbsArrayList.set(i, 15);
+            }
         }
-        int[] array = new int[absences.size()];
-        //add the element to get the resizing
-        addTheAbsences(absences, index);
-        //shift other elements
-        for (int i = absences.size(); i < index; i--) {
-            array[i] = array[i - 1];
-        }
-        //put new num in right place
-        array[index] = absences;
+        return addAbsArrayList;
     }
 
     //What is the average of only the non-FE'd absences?
@@ -101,7 +132,7 @@ public class Main {
         for (int i = 0; i < absences.size(); i++) {
             int product = absences.size() * 2;
             if (absences.get(i) >= product) {
-                count += i;
+                count++;
             }
         }
         return count;
@@ -120,12 +151,12 @@ public class Main {
     }
 
     //calculate students who had fewer than 3 absences also had perfect attendance
-    private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences) {
+    private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences, int perfAttendance) {
         int count = 0;
 
         for (int i = 0; i < absences.size(); i++) {
 
-            if (absences.get(i) < 3 && absences.get(i).equals(0)) {
+            if (absences.get(i) < 3 && absences.get(i) == perfAttendance) {
                 count++;
             }
         }
