@@ -69,9 +69,22 @@ public class Main {
         elementSort(absences);
         System.out.println("The Sorted Elements are: " + absences);
 
-        //find avg of FE'd absences
+        ArrayList<String> fiveNames = fiveDistinctNames();
+        System.out.println("Five Distinct Names: " + fiveNames);
+        //output an ArrayList of 5 distinct names.
 
+    }
 
+    //Create an ArrayList of 5 distinct names.
+    private static ArrayList<String> fiveDistinctNames() {
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Olivia");
+        names.add("James");
+        names.add("Lance");
+        names.add("Ryan");
+        names.add("Alex");
+
+        return names;
     }
 
     //Sort the absences using a user-defined sort function.
@@ -195,7 +208,6 @@ public class Main {
         }
         return count;
     }
-
 
     // the index(es) of the students who had a specified number of absences.
     private static int specificNumOfAbs(ArrayList<Integer> absences, int number) {
