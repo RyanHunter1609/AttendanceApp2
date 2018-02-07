@@ -31,12 +31,15 @@ public class Main {
         int numOfAbs = specificNumOfAbs(absences, number);
         System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
 
-        int moreThanTwice = AbsentMoreThanTwice(absences);
+        int moreThanTwice = absentMoreThanTwice(absences);
         //output students Absent more than Twice the Times the Course Meets
         System.out.println("Student(s) Absent more than Twice the Times the Course Meets: " + moreThanTwice);
         //output percent of students who FE'd
-        double percentFEd = percentOfStudentsFEd(absences, moreThanTwice);
+        double percentFEd = percentOfStudentsFEd(absences);
         System.out.println("Percent of Student(s) FE'd: " + percentFEd);
+
+        double avgAbsOfFEd = averageOfFEdAbsences(absences);
+        System.out.println("The Average of Only the FE'd Absences: " + avgAbsOfFEd);
 
         double avgAbsOfNon = averageOfNonFEdAbsences(absences);
         System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
@@ -65,6 +68,8 @@ public class Main {
 
         elementSort(absences);
         System.out.println("The Sorted Elements are: " + absences);
+
+        //find avg of FE'd absences
 
 
     }
@@ -139,26 +144,43 @@ public class Main {
 
     //What is the average of only the non-FE'd absences?
     private static double averageOfNonFEdAbsences(ArrayList<Integer> absences) {
-        Integer avg = 0;
+        int nonFEd;
+        int sum = 0;
+        double avg;
+        int moreThanTwice = absentMoreThanTwice(absences);
+
+        nonFEd = absences.size() - moreThanTwice;
+        sum += nonFEd;
+        avg = (double) sum / absences.size();
+
+        return avg;
+    }
+
+    //What is the average of only the FE'd absences
+    private static double averageOfFEdAbsences(ArrayList<Integer> absences) {
+        double avg = 0;
+        int sum = 0;
+        int moreThanTwice = absentMoreThanTwice(absences);
+
         for (int i = 0; i < absences.size(); i++) {
-            if (!absences.isEmpty() && absences.get(i) < 6) {
-                for (int j = 0; j < absences.size(); j++) {
-                    avg += j;
-                }
-                return avg.doubleValue() / absences.size();
+            if (absences.get(i) >= moreThanTwice) {
+                sum += absences.get(i);
+                avg = (double) sum / absences.size();
             }
         }
         return avg;
     }
 
     // the percentage of students who have FE'd the course.
-    private static double percentOfStudentsFEd(ArrayList<Integer> absences, int moreThanTwice) {
+    private static double percentOfStudentsFEd(ArrayList<Integer> absences) {
+        //call moreThanTwice function
+        int moreThanTwice = absentMoreThanTwice(absences);
         double qoutient = moreThanTwice / absences.size();
         return qoutient;
     }
 
     //what percentage of the students have FE'd the course
-    private static int AbsentMoreThanTwice(ArrayList<Integer> absences) {
+    private static int absentMoreThanTwice(ArrayList<Integer> absences) {
         //the index(es) of the student(s) who were absent more than twice the number of times the course meets per week.
         /** english explanation
          *
