@@ -70,9 +70,19 @@ public class Main {
         System.out.println("The Sorted Elements are: " + absences);
 
         ArrayList<String> fiveNames = fiveDistinctNames();
-        System.out.println("Five Distinct Names: " + fiveNames);
         //output an ArrayList of 5 distinct names.
+        System.out.println("Five Distinct Names: " + fiveNames);
 
+        //TODO output 5 shuffled names
+        shuffleNames(fiveNames);
+        System.out.println("Shuffled Names: " + fiveNames);
+    }
+
+    //TODO Shuffle the names using a user-defined shuffle function.
+    private static void shuffleNames(ArrayList<String> fiveNames) {
+        for (int i = 0; i < fiveNames.size(); i++) {
+            fiveNames.set(i, fiveNames.get(i));
+        }
     }
 
     //Create an ArrayList of 5 distinct names.
