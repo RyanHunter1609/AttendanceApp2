@@ -80,18 +80,25 @@ public class Main {
         shuffleNames(fiveNames);
         System.out.println("Shuffled Names: " + fiveNames);
 
-        //TODO how many of each absence?
+//        //TODO how many of each absence?
+//        Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
+//        for (int eachAbsence : absences) {
+//            //put the value,
+//            eachAbsenceMap.put(eachAbsence, 1);
 
+        // }
     }
 
-    //TODO Shuffle the names using a user-defined shuffle function.
+    // Shuffle the names using a user-defined shuffle function.
     private static void shuffleNames(ArrayList<String> fiveNames) {
         Random random = new Random();
         for (int i = 0; i < fiveNames.size(); i++) {
-            int temp1 = random.nextInt(fiveNames.size());
-//                    int temp2 = random.nextInt(fiveNames.size());
-            fiveNames.set(i, fiveNames.get(temp1));
-            fiveNames.set(temp1, );
+            //next three lines do swap
+            // set to random index
+            int randomIndex = random.nextInt(fiveNames.size());
+            String temp1 = fiveNames.get(randomIndex);
+            fiveNames.set(randomIndex, fiveNames.get(i));
+            fiveNames.set(i, temp1);
 
         }
     }
