@@ -25,9 +25,9 @@ public class Main {
         //output average number of absences
         System.out.println("Average Number of Absences: " + absenceAvg);
 
-        int threeAndPerf = fewerThanThreeAndPerfect(absences, perfAttendance);
+        double threeAndPerf = percentFewerThanThreeAndPerfect(absences, perfAttendance);
         //output students who had fewer than 3 absences also had perfect attendance
-        System.out.println("Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
+        System.out.println(" % of Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
 
         System.out.println("Enter a Number: ");
         int number = scanner.nextInt();
@@ -117,7 +117,10 @@ public class Main {
     private static void elementShuffle(ArrayList<Integer> absences) {
         Random random = new Random();
         for (int i = 0; i < absences.size(); i++) {
-            absences.set(random.nextInt(absences.size()), i);
+            int temp1 = random.nextInt(absences.size());
+            int temp2 = random.nextInt(absences.size());
+            absences.set(i, temp1);
+            absences.set(i,temp2);
         }
     }
 
@@ -245,16 +248,12 @@ public class Main {
     }
 
     //TODO calculate percentage of students who had fewer than 3 absences also had perfect attendance
-    private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences, int perfAttendance) {
-        int count = 0;
+    private static double percentFewerThanThreeAndPerfect(ArrayList<Integer> absences, int perfAttendance) {
+        int lessThan = fewerThanThreeAbsences(absences);
+        int perf = perfectAttendance(absences);
+        double percent = (double) perf / lessThan;
 
-        for (int i = 0; i < absences.size(); i++) {
-
-            if (absences.get(i) < 3 && absences.get(i) == perfAttendance) {
-                count++;
-            }
-        }
-        return count;
+        return percent;
     }
 
     //calculate the average of the absences
