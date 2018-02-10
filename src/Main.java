@@ -79,12 +79,20 @@ public class Main {
         //TODO output 5 shuffled names
         shuffleNames(fiveNames);
         System.out.println("Shuffled Names: " + fiveNames);
+
+        //TODO how many of each absence?
+
     }
 
     //TODO Shuffle the names using a user-defined shuffle function.
     private static void shuffleNames(ArrayList<String> fiveNames) {
+        Random random = new Random();
         for (int i = 0; i < fiveNames.size(); i++) {
-            fiveNames.set(i, fiveNames.get(i));
+            int temp1 = random.nextInt(fiveNames.size());
+//                    int temp2 = random.nextInt(fiveNames.size());
+            fiveNames.set(i, fiveNames.get(temp1));
+            fiveNames.set(temp1, );
+
         }
     }
 
@@ -120,7 +128,7 @@ public class Main {
             int temp1 = random.nextInt(absences.size());
             int temp2 = random.nextInt(absences.size());
             absences.set(i, temp1);
-            absences.set(i,temp2);
+            absences.set(i, temp2);
         }
     }
 
@@ -237,17 +245,17 @@ public class Main {
     }
 
     //how many students had fewer than 3 absences
-    private static int fewerThanThreeAbsences (ArrayList<Integer> absences){
+    private static int fewerThanThreeAbsences(ArrayList<Integer> absences) {
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
-            if (absences.get(i) < 3){
-                count ++;
+            if (absences.get(i) < 3) {
+                count++;
             }
         }
         return count;
     }
 
-    //TODO calculate percentage of students who had fewer than 3 absences also had perfect attendance
+    //calculate percentage of students who had fewer than 3 absences also had perfect attendance
     private static double percentFewerThanThreeAndPerfect(ArrayList<Integer> absences, int perfAttendance) {
         int lessThan = fewerThanThreeAbsences(absences);
         int perf = perfectAttendance(absences);
