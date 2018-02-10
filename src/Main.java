@@ -18,6 +18,9 @@ public class Main {
         //output How many students had perfect attendance
         System.out.println("Students with Perfect Attendance: " + perfAttendance);
 
+        int fewerThanThree = fewerThanThreeAbsences(absences);
+        System.out.println("Students with Less Than 3 Absences: " + fewerThanThree);
+
         double absenceAvg = averageOfAbsences(absences);
         //output average number of absences
         System.out.println("Average Number of Absences: " + absenceAvg);
@@ -230,7 +233,18 @@ public class Main {
         return count;
     }
 
-    //calculate students who had fewer than 3 absences also had perfect attendance
+    //how many students had fewer than 3 absences
+    private static int fewerThanThreeAbsences (ArrayList<Integer> absences){
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) < 3){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    //TODO calculate percentage of students who had fewer than 3 absences also had perfect attendance
     private static int fewerThanThreeAndPerfect(ArrayList<Integer> absences, int perfAttendance) {
         int count = 0;
 
