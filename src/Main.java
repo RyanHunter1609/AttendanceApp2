@@ -100,14 +100,14 @@ public class Main {
         return names;
     }
 
-    //Sort the absences using a user-defined sort function.
+    // Sort the absences using a user-defined sort function.
     private static void elementSort(ArrayList<Integer> absences) {
         for (int i = 0; i < absences.size(); i++) {
             for (int j = 0; j < absences.size(); j++) {
                 if (absences.get(i) > absences.get(j)) {
-                    //.set(int index, Integer element)
+                    int temp = absences.get(i);
                     absences.set(i, absences.get(j));
-                    absences.set(j, absences.get(i));
+                    absences.set(j, temp);
                 }
             }
         }
