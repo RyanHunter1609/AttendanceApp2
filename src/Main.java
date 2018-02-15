@@ -76,18 +76,12 @@ public class Main {
         //output an ArrayList of 5 distinct names.
         System.out.println("Five Distinct Names: " + fiveNames);
 
-        //TODO output 5 shuffled names
-        //
+        //output 5 shuffled names
         shuffleNames(fiveNames);
         System.out.println("Shuffled Names: " + fiveNames);
 
-//        //TODO how many of each absence?
-//        Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
-//        for (int eachAbsence : absences) {
-//            //put the value,
-//            eachAbsenceMap.put(eachAbsence, 1);
 
-        // }
+        //TODO build a random list from a list of values.
     }
 
     // Shuffle the names using a user-defined shuffle function.
@@ -100,6 +94,20 @@ public class Main {
             String temp1 = fiveNames.get(randomIndex);
             fiveNames.set(randomIndex, fiveNames.get(i));
             fiveNames.set(i, temp1);
+
+        }
+    }
+
+    private static int howManyOfEachAbs(ArrayList<Integer> absences) {
+        //TODO how many of each absence?
+        Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
+        for (int key : absences) {
+            if (!eachAbsenceMap.containsKey(key)) {
+                eachAbsenceMap.put(key, 1);
+            } else {
+                int value = eachAbsenceMap.containsKey(key) + 1;
+                eachAbsenceMap.put(key, value);
+            }
 
         }
     }
