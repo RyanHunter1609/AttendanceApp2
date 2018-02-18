@@ -82,6 +82,21 @@ public class Main {
 
 
         //TODO build a random list from a list of values.
+        ArrayList<String> randomList = randomListOfValues(fiveNames);
+        System.out.println("New List (with added name) : " + randomList);
+
+    }
+
+    private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames) {
+        //Randomly select one of the 5 names.
+        Random random = new Random();
+        for (int i = 0; i < fiveNames.size(); i++) {
+            int randomIndex = random.nextInt(fiveNames.size());
+            // Add that selected name to the ArrayList.
+
+        }
+        return null;
+
     }
 
     // Shuffle the names using a user-defined shuffle function.
@@ -98,7 +113,7 @@ public class Main {
         }
     }
 
-    private static int howManyOfEachAbs(ArrayList<Integer> absences) {
+    private static void howManyOfEachAbs(ArrayList<Integer> absences) {
         //TODO how many of each absence?
         Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
         for (int key : absences) {
