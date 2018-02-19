@@ -81,29 +81,24 @@ public class Main {
         System.out.println("Shuffled Names: " + fiveNames);
 
 
-        //TODO build a random list from a list of values.
+        // build a random list from a list of values.
         ArrayList<String> randomList = randomListOfValues(fiveNames);
         //output the new list
-        System.out.println("New List (with added name) : " + randomList);
+        System.out.println("New List (with added name) : " + fiveNames);
 
     }
 
-    //TODO put randomly selected name into the same arrayList
+    //put randomly selected name into the same arrayList
     private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames) {
         Random random = new Random();
-        String randomName;
+        String randomName = "";
         for (int i = 0; i < fiveNames.size(); i++) {
             //Randomly select one of the 5 names.
-            int randomIndex = random.nextInt(fiveNames.size());
-            randomName = fiveNames.get(randomIndex);
-
-            // Add that selected name to the ArrayList.
-            fiveNames.add(randomName);
+            randomName = fiveNames.get(random.nextInt(fiveNames.size()));
         }
-
-
+        // Add that selected name to the ArrayList.
+        fiveNames.add(randomName);
         return fiveNames;
-
     }
 
     // Shuffle the names using a user-defined shuffle function.
