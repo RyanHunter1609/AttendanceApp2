@@ -80,25 +80,43 @@ public class Main {
         shuffleNames(fiveNames);
         System.out.println("Shuffled Names: " + fiveNames);
 
+        howManyOfEachAbsence(absences);
 
         // build a random list from a list of values.
-        ArrayList<String> randomList = randomListOfValues(fiveNames);
+        ArrayList<String> randomList = randomListOfValues(fiveNames, absences);
         //output the new list
-        System.out.println("New List (with added name) : " + fiveNames);
+        System.out.println("New List (with added name) : " + randomList);
+
+//        boolean namesUsedOrNot = allNamesUsedOrNot(fiveNames);
+//        //TODO output if all names are used
+//        System.out.println(" !!!!! " + namesUsedOrNot);
 
     }
 
+//TODO Were all  5 names used at least once?
+//private static boolean allNamesUsedOrNot(ArrayList<String> fiveNames) {
+//        for (int i = 0; i < fiveNames.size(); i++) {
+//            if (fiveNames.contains(fiveNames.get(i).equals())){
+//
+//            }
+//
+//        }
+//        return true;
+//    }
+
     //put randomly selected name into the same arrayList
-    private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames) {
+    private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames, ArrayList<Integer> absences) {
         Random random = new Random();
+        ArrayList<String> newListOfNames = new ArrayList<>();
         String randomName = "";
-        for (int i = 0; i < fiveNames.size(); i++) {
+        for (int i = 0; i < absences.size(); i++) {
             //Randomly select one of the 5 names.
             randomName = fiveNames.get(random.nextInt(fiveNames.size()));
+            newListOfNames.add(randomName);
+
         }
         // Add that selected name to the ArrayList.
-        fiveNames.add(randomName);
-        return fiveNames;
+        return newListOfNames;
     }
 
     // Shuffle the names using a user-defined shuffle function.
@@ -116,7 +134,7 @@ public class Main {
     }
 
     //TODO how many of each absence?
-    private static void howManyOfEachAbs(ArrayList<Integer> absences) {
+    private static void howManyOfEachAbsence(ArrayList<Integer> absences) {
         Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
         for (int key : absences) {
             if (!eachAbsenceMap.containsKey(key)) {
