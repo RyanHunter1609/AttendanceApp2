@@ -83,6 +83,7 @@ public class Main {
 
         //TODO build a random list from a list of values.
         ArrayList<String> randomList = randomListOfValues(fiveNames);
+        //output the new list
         System.out.println("New List (with added name) : " + randomList);
 
     }
@@ -90,15 +91,18 @@ public class Main {
     //TODO put randomly selected name into the same arrayList
     private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames) {
         Random random = new Random();
-        //Randomly select one of the 5 names.
+        String randomName;
         for (int i = 0; i < fiveNames.size(); i++) {
-//            String randomName = fiveNames(new Random().nextInt(fiveNames.size()));
+            //Randomly select one of the 5 names.
+            int randomIndex = random.nextInt(fiveNames.size());
+            randomName = fiveNames.get(randomIndex);
 
+            // Add that selected name to the ArrayList.
+            fiveNames.add(randomName);
         }
-        // Add that selected name to the ArrayList.
 
 
-        return null;
+        return fiveNames;
 
     }
 
