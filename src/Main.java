@@ -87,14 +87,17 @@ public class Main {
 
     }
 
+    //TODO put randomly selected name into the same arrayList
     private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames) {
-        //Randomly select one of the 5 names.
         Random random = new Random();
+        //Randomly select one of the 5 names.
         for (int i = 0; i < fiveNames.size(); i++) {
-            int randomIndex = random.nextInt(fiveNames.size());
-            // Add that selected name to the ArrayList.
+//            String randomName = fiveNames(new Random().nextInt(fiveNames.size()));
 
         }
+        // Add that selected name to the ArrayList.
+
+
         return null;
 
     }
@@ -113,14 +116,14 @@ public class Main {
         }
     }
 
+    //TODO how many of each absence?
     private static void howManyOfEachAbs(ArrayList<Integer> absences) {
-        //TODO how many of each absence?
         Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
         for (int key : absences) {
             if (!eachAbsenceMap.containsKey(key)) {
                 eachAbsenceMap.put(key, 1);
             } else {
-                int value = eachAbsenceMap.containsKey(key) + 1;
+                int value = eachAbsenceMap.get(key) + 1;
                 eachAbsenceMap.put(key, value);
             }
 
