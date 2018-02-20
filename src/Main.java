@@ -93,20 +93,11 @@ public class Main {
 
     }
 
-    //TODO Were all  5 names used at least once?
+    //TODO calculate if all 5 names used at least once
     private static boolean allNamesUsedOrNot(ArrayList<String> fiveNames, ArrayList<String> randomList) {
-        for (int i = 0; i < fiveNames.size(); i++) {
-            if (randomList.contains("Alex") || randomList.contains("Olivia") || randomList.contains("James")
-                    || randomList.contains("Ryan") || randomList.contains("Lance")) {
+        for (int i = 0; i < randomList.size(); i++) {
+            if (randomList.contains(fiveNames)) {
                 return true;
-
-
-            }
-            if (!randomList.equals("Alex") || !randomList.equals("Olivia") || !randomList.equals("James")
-                    || !randomList.equals("Ryan") || !randomList.equals("Lance")) {
-                return false;
-
-
             }
         }
         return true;
