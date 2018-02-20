@@ -85,24 +85,32 @@ public class Main {
         // build a random list from a list of values.
         ArrayList<String> randomList = randomListOfValues(fiveNames, absences);
         //output the new list
-        System.out.println("New List (with added name) : " + randomList);
+        System.out.println("New List (with added name): " + randomList);
 
-//        boolean namesUsedOrNot = allNamesUsedOrNot(fiveNames);
-//        //TODO output if all names are used
-//        System.out.println(" !!!!! " + namesUsedOrNot);
+        boolean namesUsedOrNot = allNamesUsedOrNot(fiveNames, randomList);
+        //TODO output if all names are used
+        System.out.println("Are all names used at least once? " + namesUsedOrNot);
 
     }
 
-//TODO Were all  5 names used at least once?
-//private static boolean allNamesUsedOrNot(ArrayList<String> fiveNames) {
-//        for (int i = 0; i < fiveNames.size(); i++) {
-//            if (fiveNames.contains(fiveNames.get(i).equals())){
-//
-//            }
-//
-//        }
-//        return true;
-//    }
+    //TODO Were all  5 names used at least once?
+    private static boolean allNamesUsedOrNot(ArrayList<String> fiveNames, ArrayList<String> randomList) {
+        for (int i = 0; i < fiveNames.size(); i++) {
+            if (randomList.contains("Alex") || randomList.contains("Olivia") || randomList.contains("James")
+                    || randomList.contains("Ryan") || randomList.contains("Lance")) {
+                return true;
+
+
+            }
+            if (!randomList.equals("Alex") || !randomList.equals("Olivia") || !randomList.equals("James")
+                    || !randomList.equals("Ryan") || !randomList.equals("Lance")) {
+                return false;
+
+
+            }
+        }
+        return true;
+    }
 
     //put randomly selected name into the same arrayList
     private static ArrayList<String> randomListOfValues(ArrayList<String> fiveNames, ArrayList<Integer> absences) {
@@ -133,7 +141,7 @@ public class Main {
         }
     }
 
-    //TODO how many of each absence?
+    //how many of each absence?
     private static void howManyOfEachAbsence(ArrayList<Integer> absences) {
         Map<Integer, Integer> eachAbsenceMap = new HashMap<>();
         for (int key : absences) {
