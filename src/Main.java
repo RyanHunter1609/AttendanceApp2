@@ -88,12 +88,12 @@ public class Main {
         System.out.println("New List (with added name): " + randomList);
 
         boolean namesUsedOrNot = allNamesUsedOrNot(randomList);
-        //TODO output if all names are used
+        //output if all names are used
         System.out.println("Are all names used at least once? " + namesUsedOrNot);
 
-        /**
-         * TODO What are the names of the students with perfect attendance?
-         * **/
+        ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, perfAttendance, absences);
+        //TODO output What are the names of the students with perfect attendance?
+        System.out.println("Student Name(s) with Perfect Attendance: " + perfAttendanceNames);
 
         /**TODO What are the names of the students who have FE'd some course?
          * Create a user-defined unique function.
@@ -130,6 +130,21 @@ public class Main {
         /**TODO What are the indexes of the students who have the same absence date?**/
 
 
+    }
+
+    //TODO What are the names of the students with perfect attendance?
+    private static ArrayList<String> studentNameWithPerfAttendance(ArrayList<String> randomList, int perfAttendance, ArrayList<Integer> absences) {
+        ArrayList<String> perfectAttendanceNamesList = new ArrayList<>();
+        for (int i = 0; i < randomList.size(); i++) {
+            for (int j = 0; j < absences.size(); j++) {
+                if (randomList.get(i).equals(absences.get(i))) {
+                    if (randomList.get(i).equals(perfAttendance)) {
+                        perfectAttendanceNamesList.equals(randomList.get(i));
+                    }
+                }
+            }
+        }
+        return perfectAttendanceNamesList;
     }
 
     //calculate if all 5 names used at least once
