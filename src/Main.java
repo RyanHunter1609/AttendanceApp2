@@ -87,17 +87,61 @@ public class Main {
         //output the new list
         System.out.println("New List (with added name): " + randomList);
 
-        boolean namesUsedOrNot = allNamesUsedOrNot(fiveNames, randomList);
+        boolean namesUsedOrNot = allNamesUsedOrNot(randomList);
         //TODO output if all names are used
         System.out.println("Are all names used at least once? " + namesUsedOrNot);
 
+        /**
+         * TODO What are the names of the students with perfect attendance?
+         * **/
+
+        /**TODO What are the names of the students who have FE'd some course?
+         * Create a user-defined unique function.
+         * Ask me about using a Java Set to find unique or duplicate values.
+         * **/
+
+        /**TODO How many courses does [name] have?**/
+
+        /**TODO Which courses did [name] FE? **/
+
+        /**TODO Generate today's date and output it.
+         * Google "Java 8 LocalDate" and read how dates are used in Java.
+         * LocalDate today = LocalDate.now();
+         * Output today's date.
+         * **/
+
+        /**TODO How many days have you been alive?  Use date1.equals(date2) to check your result.**/
+
+        /**TODO Create a list of LocalDate objects.**/
+
+        /**TODO Store today's date.
+         * Store your birthday using LocalDate.of().
+         * Add dates until it has the same size as the names list. Use LocalDate.minusDays() to generate random dates within 20 days of today's date.
+         * **/
+
+        /**TODO What are the names of the students with the fewest absences?**/
+
+        /**TODO What are the names of students who have the longest number of days since an absence?
+         * See LocalDate.isAfter().
+         * **/
+        /**TODO What is the range of absence dates?
+         * What are the indexes of the students who have [X] absence date?
+         * **/
+        /**TODO What are the indexes of the students who have the same absence date?**/
+
+
     }
 
-    //TODO calculate if all 5 names used at least once
-    private static boolean allNamesUsedOrNot(ArrayList<String> fiveNames, ArrayList<String> randomList) {
+    //calculate if all 5 names used at least once
+    private static boolean allNamesUsedOrNot(ArrayList<String> randomList) {
         for (int i = 0; i < randomList.size(); i++) {
-            if (randomList.contains(fiveNames)) {
-                return true;
+            for (int j = 0; j < fiveDistinctNames().size(); j++) {
+                if (!randomList.contains(fiveDistinctNames().get(i))) {
+                    return false;
+                }
+                if (randomList.contains(fiveDistinctNames().get(i))) {
+                    return true;
+                }
             }
         }
         return true;
