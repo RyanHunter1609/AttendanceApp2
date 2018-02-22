@@ -92,7 +92,7 @@ public class Main {
         System.out.println("Are all names used at least once? " + namesUsedOrNot);
 
         ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, perfAttendance, absences);
-        //TODO output What are the names of the students with perfect attendance?
+        // output What are the names of the students with perfect attendance?
         System.out.println("Student Name(s) with Perfect Attendance: " + perfAttendanceNames);
 
         /**TODO What are the names of the students who have FE'd some course?
@@ -100,9 +100,23 @@ public class Main {
          * Ask me about using a Java Set to find unique or duplicate values.
          * **/
 
-        /**TODO How many courses does [name] have?**/
 
-        /**TODO Which courses did [name] FE? **/
+        /**TODO How many courses does [name] have?
+         * ask for name
+         * locate person in name list
+         * get index
+         * if the name equals the userinput
+         * count
+         * return count
+         * **/
+
+        /**TODO Which courses did [name] FE?
+         * pass name as a parameter
+         * make new arrayList
+         * locate name in list
+         * if the element equals perfect attendance
+         * get the course(element)
+         * return new array of courses**/
 
         /**TODO Generate today's date and output it.
          * Google "Java 8 LocalDate" and read how dates are used in Java.
@@ -119,7 +133,11 @@ public class Main {
          * Add dates until it has the same size as the names list. Use LocalDate.minusDays() to generate random dates within 20 days of today's date.
          * **/
 
-        /**TODO What are the names of the students with the fewest absences?**/
+        /**TODO What are the names of the students with the fewest absences?
+         * pass names list as a parameter
+         * look inside list
+         *
+         * **/
 
         /**TODO What are the names of students who have the longest number of days since an absence?
          * See LocalDate.isAfter().
@@ -132,16 +150,12 @@ public class Main {
 
     }
 
-    //TODO What are the names of the students with perfect attendance?
+    // What are the names of the students with perfect attendance?
     private static ArrayList<String> studentNameWithPerfAttendance(ArrayList<String> randomList, int perfAttendance, ArrayList<Integer> absences) {
         ArrayList<String> perfectAttendanceNamesList = new ArrayList<>();
-        for (int i = 0; i < randomList.size(); i++) {
-            for (int j = 0; j < absences.size(); j++) {
-                if (randomList.get(i).equals(absences.get(i))) {
-                    if (randomList.get(i).equals(perfAttendance)) {
-                        perfectAttendanceNamesList.equals(randomList.get(i));
-                    }
-                }
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) == perfAttendance) {
+                perfectAttendanceNamesList.add(randomList.get(i));
             }
         }
         return perfectAttendanceNamesList;
@@ -170,6 +184,7 @@ public class Main {
         for (int i = 0; i < absences.size(); i++) {
             //Randomly select one of the 5 names.
             randomName = fiveNames.get(random.nextInt(fiveNames.size()));
+            //add randomly selected name to the list
             newListOfNames.add(randomName);
 
         }
