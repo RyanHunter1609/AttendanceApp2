@@ -95,10 +95,9 @@ public class Main {
         // output What are the names of the students with perfect attendance?
         System.out.println("Student Name(s) with Perfect Attendance: " + perfAttendanceNames);
 
-        /**TODO What are the names of the students who have FE'd some course?
-         * Create a user-defined unique function.
-         * Ask me about using a Java Set to find unique or duplicate values.
-         * **/
+        ArrayList<String> fEDStudentNames = studentsNamesWhoFE(randomList, absences);
+        // output What are the names of the students who have FE'd some course?
+        System.out.println("Student Name(s) Who FE'd: " + fEDStudentNames);
 
 
         /**TODO How many courses does [name] have?
@@ -148,6 +147,24 @@ public class Main {
         /**TODO What are the indexes of the students who have the same absence date?**/
 
 
+    }
+
+    // What are the names of the students who have FE'd some course?
+    private static ArrayList<String> studentsNamesWhoFE(ArrayList<String> randomList, ArrayList<Integer> absences) {
+        //Create a user-defined unique function.
+        //Ask me about using a Java Set to find unique or duplicate values.
+
+        ArrayList<String> studentsWhoFEList = new ArrayList<>();
+        int moreThanTwice = absentMoreThanTwice(absences);
+
+
+        for (int i = 0; i < absences.size(); i++) {
+            if (absences.get(i) >= moreThanTwice) {
+                studentsWhoFEList.add(randomList.get(i));
+            }
+        }
+
+        return studentsWhoFEList;
     }
 
     // What are the names of the students with perfect attendance?
@@ -257,6 +274,7 @@ public class Main {
     }
 
     private static Set<Integer> returnUniqueValues(ArrayList<Integer> absences) {
+        //user-defined unique values function
         Set<Integer> storeUVals = new HashSet<>();
         for (int i = 0; i < absences.size(); i++) {
             storeUVals.add(absences.get(i));
