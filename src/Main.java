@@ -99,15 +99,16 @@ public class Main {
         // output What are the names of the students who have FE'd some course?
         System.out.println("Student Name(s) Who FE'd: " + fEDStudentNames);
 
+        //ask the user for a name
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Enter a Name: ");
+        String userNameLookup = scanner1.nextLine().toUpperCase();
+        int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList);
 
-        /**TODO How many courses does [name] have?
-         * ask for name
-         * locate person in name list
-         * get index
-         * if the name equals the userinput
-         * count
-         * return count
-         * **/
+        //output How many courses does [name] have?
+        System.out.println(userNameLookup + " Has " + howManyCourses + " Courses");
+
+
 
         /**TODO Which courses did [name] FE?
          * pass name as a parameter
@@ -147,6 +148,21 @@ public class Main {
         /**TODO What are the indexes of the students who have the same absence date?**/
 
 
+    }
+
+    //TODO How many courses does [name] have?
+    private static int howManyCoursesForStudent(String userNameLookup, ArrayList<String> randomList) {
+        int count = 0;
+        //locate person in name list
+        for (int i = 0; i < randomList.size(); i++) {
+            //get element at index
+            // if the name equals the userinput...
+            if (randomList.contains(userNameLookup)) {
+                //count
+                count++;
+            }
+        }
+        return count;
     }
 
     // What are the names of the students who have FE'd some course?
