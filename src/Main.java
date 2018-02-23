@@ -111,14 +111,8 @@ public class Main {
 
         int coursesFE = whichCoursesFE(absences, userNameLookup);
 
+        // output Which courses did [name] FE?
         System.out.println(userNameLookup + " FE'd " + coursesFE + " courses");
-        /**TODO Which courses did [name] FE?
-         * pass name as a parameter
-         * make new arrayList
-         * locate name in list
-         * if the element equals perfect attendance
-         * get the course(element)
-         * return new array of courses**/
 
         /**TODO Generate today's date and output it.
          * Google "Java 8 LocalDate" and read how dates are used in Java.
@@ -152,13 +146,12 @@ public class Main {
 
     }
 
+    //Which courses did [name] FE?
     private static int whichCoursesFE(ArrayList<Integer> absences, String userNameLookup) {
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
-
             if (absences.get(i).equals(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
                 count++;
-
             }
         }
         return count;
