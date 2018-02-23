@@ -13,31 +13,31 @@ public class Main {
 
         ArrayList absences = listOfAbsences(userName);
         //output the list of absences.
-        System.out.println("The Elements Are: " + absences);
+        System.out.println("\nThe Elements Are: " + absences);
 
         int perfAttendance = perfectAttendance(absences);
         //output How many students had perfect attendance
-        System.out.println("Students with Perfect Attendance: " + perfAttendance);
+        System.out.println("\nStudents with Perfect Attendance: " + perfAttendance);
 
         int fewerThanThree = fewerThanThreeAbsences(absences);
-        System.out.println("Students with Less Than 3 Absences: " + fewerThanThree);
+        System.out.println("\nStudents with Less Than 3 Absences: " + fewerThanThree);
 
         double absenceAvg = averageOfAbsences(absences);
         //output average number of absences
-        System.out.println("Average Number of Absences: " + absenceAvg);
+        System.out.println("\nAverage Number of Absences: " + absenceAvg);
 
         double threeAndPerf = percentFewerThanThreeAndPerfect(absences, perfAttendance);
         //output students who had fewer than 3 absences also had perfect attendance
         System.out.println(" % of Students Who Had Fewer than 3 Absences Also Had Perfect Attendance: " + threeAndPerf);
 
-        System.out.println("Enter the Number of Absences You Want Find: ");
+        System.out.println("\nEnter the Number of Absences You Want Find: ");
         int number = scanner.nextInt();
         int numOfAbs = specificNumOfAbs(absences, number);
         System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
 
         int moreThanTwice = absentMoreThanTwice(absences);
         //output students Absent more than Twice the Times the Course Meets
-        System.out.println("Student(s) Absent more than Twice the Times the Course Meets: " + moreThanTwice);
+        System.out.println("\nStudent(s) Absent more than Twice the Times the Course Meets: " + moreThanTwice);
         //output percent of students who FE'd
         double percentFEd = percentOfStudentsFEd(absences);
         System.out.println("Percent of Student(s) FE'd: " + percentFEd);
@@ -48,53 +48,53 @@ public class Main {
         double avgAbsOfNon = averageOfNonFEdAbsences(absences);
         System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
 
-        System.out.println("What Number Would You Like to Add to the List of Absences? ");
+        System.out.println("\nWhat Number Would You Like to Add to the List of Absences? ");
         int newNum = scanner.nextInt();
 
         System.out.println("Add " + newNum + " at Which Element?");
         int index = scanner.nextInt();
         ArrayList<Integer> addAbs = addTheAbsences(absences, newNum, index);
-        System.out.println("Your New List of Elements: " + addAbs);
+        System.out.println("\nYour New List of Elements: " + addAbs);
 
         ArrayList<Integer> sort = sortElements(absences);
         //output sorted elements
-        System.out.println("Sorted Elements: " + sort);
+        System.out.println("\nSorted Elements: " + sort);
 
         ArrayList<Integer> shuffle = shuffleElements(absences);
         //output shuffled elements
         System.out.println("Shuffled Elements: " + shuffle);
 
         Set<Integer> unique = returnUniqueValues(absences);
-        System.out.println("The Set of Unique Elements: " + unique);
+        System.out.println("\nThe Set of Unique Elements: " + unique);
 
         elementShuffle(absences);
-        System.out.println("The Shuffled Elements are: " + absences);
+        System.out.println("\nThe Shuffled Elements are: " + absences);
 
         elementSort(absences);
         System.out.println("The Sorted Elements are: " + absences);
 
         ArrayList<String> fiveNames = fiveDistinctNames();
         //output an ArrayList of 5 distinct names.
-        System.out.println("Five Distinct Names: " + fiveNames);
+        System.out.println("\nFive Distinct Names: " + fiveNames);
 
         //output 5 shuffled names
         shuffleNames(fiveNames);
-        System.out.println("Shuffled Names: " + fiveNames);
+        System.out.println("\nShuffled Names: " + fiveNames);
 
         howManyOfEachAbsence(absences);
 
         // build a random list from a list of values.
         ArrayList<String> randomList = randomListOfValues(fiveNames, absences);
         //output the new list
-        System.out.println("New List (with added names): " + randomList);
+        System.out.println("\nNew List (with added names): " + randomList);
 
         boolean namesUsedOrNot = allNamesUsedOrNot(randomList);
         //output if all names are used
-        System.out.println("Are All Names Used at Least Once? " + namesUsedOrNot);
+        System.out.println("\nAre All Names Used at Least Once? " + namesUsedOrNot);
 
         ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, absences);
         // output What are the names of the students with perfect attendance?
-        System.out.println("Student Name(s) with Perfect Attendance: " + perfAttendanceNames);
+        System.out.println("\nStudent Name(s) with Perfect Attendance: " + perfAttendanceNames);
 
         ArrayList<String> fEDStudentNames = studentsNamesWhoFE(randomList, absences);
         // output What are the names of the students who have FE'd some course?
@@ -102,7 +102,7 @@ public class Main {
 
         //ask the user for a name
         Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Enter a Name that You Want to Search for: ");
+        System.out.println("\nEnter a Name that You Want to Search for: ");
         String userNameLookup = scanner1.nextLine().toUpperCase();
 
         int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList, absences);
@@ -117,9 +117,12 @@ public class Main {
 
         LocalDate todaysDate = generateTodaysDate();
         //Output today's date.
-        System.out.println("Today's Date: " + todaysDate);
+        System.out.println("\nToday's Date: " + todaysDate);
 
         /**TODO How many days have you been alive?  Use date1.equals(date2) to check your result.**/
+        // ask user for birth date (year, month, day)
+        System.out.println("\nTo find out how many days you've been alive ENTER your birthday (year, month, day).");
+        int daysAlive = howManyDaysLived(todaysDate);
 
         /**TODO Create a list of LocalDate objects.**/
 
@@ -139,10 +142,20 @@ public class Main {
          * **/
         /**TODO What is the range of absence dates?
          * What are the indexes of the students who have [X] absence date?
+         *
          * **/
-        /**TODO What are the indexes of the students who have the same absence date?**/
+        /**TODO What are the indexes of the students who have the same absence date?
+         * find the indexes that match
+         * get the student names that match that index
+         * return indexes**/
 
 
+    }
+
+    private static int howManyDaysLived(LocalDate todaysDate) {
+
+
+        return 0;
     }
 
     // Generate today's date and return it.
