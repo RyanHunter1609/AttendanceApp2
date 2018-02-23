@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
@@ -114,11 +115,9 @@ public class Main {
         // output Which courses did [name] FE?
         System.out.println(userNameLookup + " FE'd " + coursesFE + " courses");
 
-        /**TODO Generate today's date and output it.
-         * Google "Java 8 LocalDate" and read how dates are used in Java.
-         * LocalDate today = LocalDate.now();
-         * Output today's date.
-         * **/
+        LocalDate todaysDate = generateTodaysDate();
+        //Output today's date.
+        System.out.println("Today's Date: " + todaysDate);
 
         /**TODO How many days have you been alive?  Use date1.equals(date2) to check your result.**/
 
@@ -144,6 +143,15 @@ public class Main {
         /**TODO What are the indexes of the students who have the same absence date?**/
 
 
+    }
+
+    // Generate today's date and return it.
+    private static LocalDate generateTodaysDate() {
+        /** Google "Java 8 LocalDate" and read how dates are used in Java.
+         * LocalDate today = LocalDate.now();
+         * */
+        LocalDate today = LocalDate.now();
+        return today;
     }
 
     //Which courses did [name] FE?
