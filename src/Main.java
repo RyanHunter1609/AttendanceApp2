@@ -103,7 +103,7 @@ public class Main {
         //ask the user for a name
         Scanner scanner1 = new Scanner(System.in);
         System.out.println("\nEnter a Name that You Want to Search for: ");
-        String userNameLookup = scanner1.nextLine().toUpperCase();
+        String userNameLookup = scanner1.nextLine();
 
         int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList, absences);
 
@@ -122,7 +122,16 @@ public class Main {
         /**TODO How many days have you been alive?  Use date1.equals(date2) to check your result.**/
         // ask user for birth date (year, month, day)
         System.out.println("\nTo find out how many days you've been alive ENTER your birthday (year, month, day).");
-        int daysAlive = howManyDaysLived(todaysDate);
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Enter Year: ");
+        int userYearLookup = scanner2.nextInt();
+        System.out.println("Enter Month: ");
+        int userMonthLookup = scanner2.nextInt();
+
+        System.out.println("Enter Day: ");
+        int userDayLookup = scanner2.nextInt();
+
+        int daysAlive = howManyDaysLived(todaysDate, userYearLookup, userMonthLookup, userDayLookup);
 
         /**TODO Create a list of LocalDate objects.**/
 
@@ -152,9 +161,8 @@ public class Main {
 
     }
 
-    private static int howManyDaysLived(LocalDate todaysDate) {
-
-
+    private static int howManyDaysLived(LocalDate todaysDate, int userYearLookup, int userMonthLookup, int userDayLookup) {
+        LocalDate birthdate = LocalDate.of(userYearLookup, userMonthLookup, userDayLookup);
         return 0;
     }
 
@@ -171,7 +179,7 @@ public class Main {
     private static int whichCoursesFE(ArrayList<Integer> absences, String userNameLookup, ArrayList<String> randomNameList) {
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
-            if (randomNameList.get(i).equals(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
+            if (randomNameList.get(i).equalsIgnoreCase(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
                 count++;
             }
         }
@@ -185,7 +193,8 @@ public class Main {
         for (int i = 0; i < absences.size(); i++) {
             //get element at index
             // if the name equals the user input...
-            if (userNameLookup.equals(randomList.get(i))) {
+            System.out.println(i + " " + userNameLookup + " " + randomList.get(i) + " " + count);
+            if (userNameLookup.equalsIgnoreCase(randomList.get(i))) {
                 count++;
             }
         }
