@@ -27,9 +27,9 @@ public class Main {
 
         double threeAndPerf = percentFewerThanThreeAndPerfect(absences, perfAttendance);
         //output students who had fewer than 3 absences also had perfect attendance
-        System.out.println(" % of Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
+        System.out.println(" % of Students Who Had Fewer than 3 Absences Also Had Perfect Attendance: " + threeAndPerf);
 
-        System.out.println("Enter the Number of absences you want find: ");
+        System.out.println("Enter the Number of Absences You Want Find: ");
         int number = scanner.nextInt();
         int numOfAbs = specificNumOfAbs(absences, number);
         System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
@@ -47,10 +47,10 @@ public class Main {
         double avgAbsOfNon = averageOfNonFEdAbsences(absences);
         System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
 
-        System.out.println("What Number Would You Like to Add to the list of absences? ");
+        System.out.println("What Number Would You Like to Add to the List of Absences? ");
         int newNum = scanner.nextInt();
 
-        System.out.println("Add " + newNum + " at Which Index?");
+        System.out.println("Add " + newNum + " at Which Element?");
         int index = scanner.nextInt();
         ArrayList<Integer> addAbs = addTheAbsences(absences, newNum, index);
         System.out.println("Your New List of Elements: " + addAbs);
@@ -85,11 +85,11 @@ public class Main {
         // build a random list from a list of values.
         ArrayList<String> randomList = randomListOfValues(fiveNames, absences);
         //output the new list
-        System.out.println("New List (with added name): " + randomList);
+        System.out.println("New List (with added names): " + randomList);
 
         boolean namesUsedOrNot = allNamesUsedOrNot(randomList);
         //output if all names are used
-        System.out.println("Are all names used at least once? " + namesUsedOrNot);
+        System.out.println("Are All Names Used at Least Once? " + namesUsedOrNot);
 
         ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, absences);
         // output What are the names of the students with perfect attendance?
@@ -101,15 +101,17 @@ public class Main {
 
         //ask the user for a name
         Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Enter a Name that you want to search for: ");
+        System.out.println("Enter a Name that You Want to Search for: ");
         String userNameLookup = scanner1.nextLine().toUpperCase();
-        int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList);
+
+        int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList, absences);
 
         //output How many courses does [name] have?
         System.out.println(userNameLookup + " Has " + howManyCourses + " Courses");
 
+        int coursesFE = whichCoursesFE(absences, userNameLookup);
 
-
+        System.out.println(userNameLookup + " FE'd " + coursesFE + " courses");
         /**TODO Which courses did [name] FE?
          * pass name as a parameter
          * make new arrayList
@@ -150,15 +152,26 @@ public class Main {
 
     }
 
-    //TODO How many courses does [name] have?
-    private static int howManyCoursesForStudent(String userNameLookup, ArrayList<String> randomList) {
+    private static int whichCoursesFE(ArrayList<Integer> absences, String userNameLookup) {
+        int count = 0;
+        for (int i = 0; i < absences.size(); i++) {
+
+            if (absences.get(i).equals(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
+                count++;
+
+            }
+        }
+        return count;
+    }
+
+    //How many courses does [name] have?
+    private static int howManyCoursesForStudent(String userNameLookup, ArrayList<String> randomList, ArrayList<Integer> absences) {
         int count = 0;
         //locate person in name list
-        for (int i = 0; i < randomList.size(); i++) {
+        for (int i = 0; i < absences.size(); i++) {
             //get element at index
             // if the name equals the user input...
-            if (randomList.contains(userNameLookup)) {
-                //count
+            if (userNameLookup.equals(randomList)) {
                 count++;
             }
         }
