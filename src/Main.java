@@ -6,8 +6,8 @@ public class Main {
         System.out.println("Welcome to Attendance App!");
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Your Name: ");
-        String userName = scanner.nextLine().toUpperCase();
+        // System.out.println("Enter Your Name: ");
+        String userName = "Ryan";
         System.out.println("Welcome " + userName);
 
         ArrayList absences = listOfAbsences(userName);
@@ -29,7 +29,7 @@ public class Main {
         //output students who had fewer than 3 absences also had perfect attendance
         System.out.println(" % of Students who had fewer than 3 absences also had perfect attendance: " + threeAndPerf);
 
-        System.out.println("Enter a Number: ");
+        System.out.println("Enter the Number of absences you want find: ");
         int number = scanner.nextInt();
         int numOfAbs = specificNumOfAbs(absences, number);
         System.out.println(numOfAbs + " student(s) has " + number + " absence(s).");
@@ -47,7 +47,7 @@ public class Main {
         double avgAbsOfNon = averageOfNonFEdAbsences(absences);
         System.out.println("The Average of Only the Non-FE'd Absences: " + avgAbsOfNon);
 
-        System.out.println("What Number Would You Like to Add? ");
+        System.out.println("What Number Would You Like to Add to the list of absences? ");
         int newNum = scanner.nextInt();
 
         System.out.println("Add " + newNum + " at Which Index?");
@@ -91,7 +91,7 @@ public class Main {
         //output if all names are used
         System.out.println("Are all names used at least once? " + namesUsedOrNot);
 
-        ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, perfAttendance, absences);
+        ArrayList<String> perfAttendanceNames = studentNameWithPerfAttendance(randomList, absences);
         // output What are the names of the students with perfect attendance?
         System.out.println("Student Name(s) with Perfect Attendance: " + perfAttendanceNames);
 
@@ -101,7 +101,7 @@ public class Main {
 
         //ask the user for a name
         Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Enter a Name: ");
+        System.out.println("Enter a Name that you want to search for: ");
         String userNameLookup = scanner1.nextLine().toUpperCase();
         int howManyCourses = howManyCoursesForStudent(userNameLookup, randomList);
 
@@ -156,7 +156,7 @@ public class Main {
         //locate person in name list
         for (int i = 0; i < randomList.size(); i++) {
             //get element at index
-            // if the name equals the userinput...
+            // if the name equals the user input...
             if (randomList.contains(userNameLookup)) {
                 //count
                 count++;
@@ -171,11 +171,10 @@ public class Main {
         //Ask me about using a Java Set to find unique or duplicate values.
 
         ArrayList<String> studentsWhoFEList = new ArrayList<>();
-        int moreThanTwice = absentMoreThanTwice(absences);
 
-
-        for (int i = 0; i < absences.size(); i++) {
-            if (absences.get(i) >= moreThanTwice) {
+        for (int i = 0; i < randomList.size(); i++) {
+            int product = absences.size() * 2 + 1;
+            if (absences.get(i) == product) {
                 studentsWhoFEList.add(randomList.get(i));
             }
         }
@@ -184,10 +183,10 @@ public class Main {
     }
 
     // What are the names of the students with perfect attendance?
-    private static ArrayList<String> studentNameWithPerfAttendance(ArrayList<String> randomList, int perfAttendance, ArrayList<Integer> absences) {
+    private static ArrayList<String> studentNameWithPerfAttendance(ArrayList<String> randomList, ArrayList<Integer> absences) {
         ArrayList<String> perfectAttendanceNamesList = new ArrayList<>();
-        for (int i = 0; i < absences.size(); i++) {
-            if (absences.get(i) == perfAttendance) {
+        for (int i = 0; i < randomList.size(); i++) {
+            if (absences.get(i) == 0) {
                 perfectAttendanceNamesList.add(randomList.get(i));
             }
         }
@@ -279,14 +278,15 @@ public class Main {
     }
 
     //Shuffle the absences using a user-defined shuffle() function.
-    private static void elementShuffle(ArrayList<Integer> absences) {
+    private static ArrayList elementShuffle(ArrayList<Integer> absences) {
         Random random = new Random();
         for (int i = 0; i < absences.size(); i++) {
-            int temp1 = random.nextInt(absences.size());
-            int temp2 = random.nextInt(absences.size());
+            int shuffle = random.nextInt(absences.size());
+            int temp1 = absences.get(shuffle);
+            absences.set(shuffle, absences.get(i));
             absences.set(i, temp1);
-            absences.set(i, temp2);
         }
+        return absences;
     }
 
     private static Set<Integer> returnUniqueValues(ArrayList<Integer> absences) {
@@ -313,7 +313,7 @@ public class Main {
     }
 
     //As a user, I need to be able to change the absences in the ArrayList.
-    private static ArrayList<Integer> addTheAbsences(ArrayList<Integer> absences, int newNum, int index) {
+    private static ArrayList<Integer> addTheAbsences(ArrayList<Integer> absences, int newNum, int element) {
         // X is a positive, negative, or even zero integer.
         // Y can be any integer too.
         // No absence should be less than zero or more than 15 after performing this calculation.
@@ -321,7 +321,7 @@ public class Main {
         ArrayList<Integer> addAbsArrayList = new ArrayList<>();
         addAbsArrayList = absences;
         for (int i = 0; i < addAbsArrayList.size(); i++) {
-            if (addAbsArrayList.get(i) > index) {
+            if (addAbsArrayList.get(i) >= element) {
                 //create new variable b/c you're getting a new number
                 int newSpot = addAbsArrayList.get(i) + newNum;
                 //set new number to i
@@ -374,7 +374,7 @@ public class Main {
         return qoutient;
     }
 
-    //what percentage of the students have FE'd the course
+    //what the students missed more than twice the class time (FE)
     private static int absentMoreThanTwice(ArrayList<Integer> absences) {
         //the index(es) of the student(s) who were absent more than twice the number of times the course meets per week.
         /** english explanation
@@ -383,7 +383,7 @@ public class Main {
          * **/
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
-            int product = absences.size() * 2;
+            int product = absences.size() * 2 + 1;
             if (absences.get(i) >= product) {
                 count++;
             }
