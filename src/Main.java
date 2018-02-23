@@ -110,7 +110,7 @@ public class Main {
         //output How many courses does [name] have?
         System.out.println(userNameLookup + " Has " + howManyCourses + " Courses");
 
-        int coursesFE = whichCoursesFE(absences, userNameLookup);
+        int coursesFE = whichCoursesFE(absences, userNameLookup, randomList);
 
         // output Which courses did [name] FE?
         System.out.println(userNameLookup + " FE'd " + coursesFE + " courses");
@@ -155,10 +155,10 @@ public class Main {
     }
 
     //Which courses did [name] FE?
-    private static int whichCoursesFE(ArrayList<Integer> absences, String userNameLookup) {
+    private static int whichCoursesFE(ArrayList<Integer> absences, String userNameLookup, ArrayList<String> randomNameList) {
         int count = 0;
         for (int i = 0; i < absences.size(); i++) {
-            if (absences.get(i).equals(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
+            if (randomNameList.get(i).equals(userNameLookup) && absences.get(i).equals(absences.size() * 2 + 1)) {
                 count++;
             }
         }
@@ -172,7 +172,7 @@ public class Main {
         for (int i = 0; i < absences.size(); i++) {
             //get element at index
             // if the name equals the user input...
-            if (userNameLookup.equals(randomList)) {
+            if (userNameLookup.equals(randomList.get(i))) {
                 count++;
             }
         }
