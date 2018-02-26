@@ -137,7 +137,10 @@ public class Main {
         //output how many days the user has lived
         System.out.println("You've been alive " + daysAlive + " day(s).");
 
-        /**TODO Create a list of LocalDate objects.**/
+        //TODO Create a list of LocalDate objects.
+        ArrayList<LocalDate> dates = listOfDates();
+        //TODO Create a list of LocalDate objects.
+        System.out.println("List of dates: " + dates);
 
         /**TODO Store today's date.
          * Store your birthday using LocalDate.of().
@@ -163,6 +166,21 @@ public class Main {
          * return indexes**/
 
 
+    }
+
+    private static ArrayList<LocalDate> listOfDates() {
+        Calendar date = Calendar.getInstance();
+        ArrayList<LocalDate> dates = new ArrayList<>();
+        for (int i = 0; i < dates.size(); i++) {
+            date.add(Calendar.DATE, 5);
+            // Create new instance of cal
+            Calendar temp = Calendar.getInstance();
+            //Makes its inner values the same
+//            temp.add(date.getTime());
+            // Add unique instance to list
+//            dates.add(temp);
+        }
+        return dates;
     }
 
     //calculate how many days the user has lived
