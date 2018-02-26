@@ -120,7 +120,7 @@ public class Main {
         //Output today's date.
         System.out.println("\nToday's Date: " + todaysDate);
 
-        /**TODO How many days have you been alive?  Use date1.equals(date2) to check your result.**/
+        /** How many days have you been alive?  Use date1.equals(date2) to check your result.**/
         // ask user for birth date (year, month, day)
         System.out.println("\nTo find out how many days you've been alive ENTER your birthday (year, month, day).");
         Scanner scanner2 = new Scanner(System.in);
@@ -134,6 +134,7 @@ public class Main {
 
         long daysAlive = howManyDaysLived(todaysDate, userYearLookup, userMonthLookup, userDayLookup);
 
+        //output how many days the user has lived
         System.out.println("You've been alive " + daysAlive + " day(s).");
 
         /**TODO Create a list of LocalDate objects.**/
