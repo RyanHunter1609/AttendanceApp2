@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -131,7 +132,9 @@ public class Main {
         System.out.println("Enter Day: ");
         int userDayLookup = scanner2.nextInt();
 
-        int daysAlive = howManyDaysLived(todaysDate, userYearLookup, userMonthLookup, userDayLookup);
+        long daysAlive = howManyDaysLived(todaysDate, userYearLookup, userMonthLookup, userDayLookup);
+
+        System.out.println("You've been alive " + daysAlive + " day(s).");
 
         /**TODO Create a list of LocalDate objects.**/
 
@@ -161,9 +164,16 @@ public class Main {
 
     }
 
-    private static int howManyDaysLived(LocalDate todaysDate, int userYearLookup, int userMonthLookup, int userDayLookup) {
+    //calculate how many days the user has lived
+    private static long howManyDaysLived(LocalDate todaysDate, int userYearLookup, int userMonthLookup, int userDayLookup) {
         LocalDate birthdate = LocalDate.of(userYearLookup, userMonthLookup, userDayLookup);
-        return 0;
+
+        long bday = birthdate.toEpochDay();
+        long date = todaysDate.toEpochDay();
+
+        long day = date - bday;
+
+        return day;
     }
 
     // Generate today's date and return it.
@@ -193,7 +203,6 @@ public class Main {
         for (int i = 0; i < absences.size(); i++) {
             //get element at index
             // if the name equals the user input...
-            System.out.println(i + " " + userNameLookup + " " + randomList.get(i) + " " + count);
             if (userNameLookup.equalsIgnoreCase(randomList.get(i))) {
                 count++;
             }
