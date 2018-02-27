@@ -148,11 +148,10 @@ public class Main {
         ArrayList<LocalDate> datesAndToday = listOfDatesWithCurrentDayAdded(dates);
         System.out.println("List of Dates (Current Date Included):  " + datesAndToday.size());
 
-        /**TODO What are the names of the students with the fewest absences?
-         * pass names list as a parameter
-         * look inside list
-         *
-         * **/
+        ArrayList<String> namesWithFewest = studentsWithFewestAbsences(absences, randomList);
+        //TODO output the names of the students with the fewest absences?
+        System.out.println("Student(s) With Fewest Absences: " + namesWithFewest);
+
 
         /**TODO What are the names of students who have the longest number of days since an absence?
          * See LocalDate.isAfter().
@@ -167,6 +166,20 @@ public class Main {
          * return indexes**/
 
 
+    }
+
+    /**
+     * TODO What are the names of the students with the fewest absences?
+     * pass names list as a parameter
+     * look inside list
+     **/
+    private static ArrayList<String> studentsWithFewestAbsences(ArrayList<Integer> absences, ArrayList<String> nameList) {
+        for (int i = 0; i < absences.size(); i++) {
+//            if (nameList.get(i) >) {
+//
+//            }
+        }
+        return null;
     }
 
     /**
