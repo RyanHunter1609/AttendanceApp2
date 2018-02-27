@@ -137,15 +137,16 @@ public class Main {
         //output how many days the user has lived
         System.out.println("You've been alive " + daysAlive + " day(s).");
 
-        //TODO Create a list of LocalDate objects.
+        //Create a list of LocalDate objects.
         ArrayList<LocalDate> dates = listOfDates();
-        //TODO Create a list of LocalDate objects.
-        System.out.println("List of dates: " + dates);
 
-        /**TODO Store today's date.
-         * Store your birthday using LocalDate.of().
-         * Add dates until it has the same size as the names list. Use LocalDate.minusDays() to generate random dates within 20 days of today's date.
-         * **/
+        //output a list of LocalDate objects.
+        System.out.println("\nList of dates: " + dates.size());
+
+        //output today's date.
+
+        ArrayList<LocalDate> datesAndToday = listOfDatesWithCurrentDayAdded(dates);
+        System.out.println("List of Dates (Current Date Included):  " + datesAndToday.size());
 
         /**TODO What are the names of the students with the fewest absences?
          * pass names list as a parameter
@@ -168,18 +169,21 @@ public class Main {
 
     }
 
+    /**
+     * Store today's date.
+     * Store your birthday using LocalDate.of().
+     * Add dates until it has the same size as the names list. Use LocalDate.minusDays() to generate random dates within 20 days of today's date.
+     **/
+    private static ArrayList<LocalDate> listOfDatesWithCurrentDayAdded(ArrayList<LocalDate> dates) {
+        LocalDate today = LocalDate.now();
+        dates.add(today);
+        return dates;
+    }
+
+    //Create a list of LocalDate objects.
     private static ArrayList<LocalDate> listOfDates() {
-        Calendar date = Calendar.getInstance();
+
         ArrayList<LocalDate> dates = new ArrayList<>();
-        for (int i = 0; i < dates.size(); i++) {
-            date.add(Calendar.DATE, 5);
-            // Create new instance of cal
-            Calendar temp = Calendar.getInstance();
-            //Makes its inner values the same
-//            temp.add(date.getTime());
-            // Add unique instance to list
-//            dates.add(temp);
-        }
         return dates;
     }
 
