@@ -174,12 +174,21 @@ public class Main {
      * look inside list
      **/
     private static ArrayList<String> studentsWithFewestAbsences(ArrayList<Integer> absences, ArrayList<String> nameList) {
+        ArrayList<String> smallestNumberList = new ArrayList<>();
+        int smallest = absences.size();
+
         for (int i = 0; i < absences.size(); i++) {
-//            if (nameList.get(i) >) {
-//
-//            }
+            for (int number : absences) {
+                if (number < smallest) {
+                    smallest = number;
+                    if (absences.get(i) == smallest) {
+                        smallestNumberList.add(nameList.get(i));
+                    }
+                }
+            }
+
         }
-        return null;
+        return smallestNumberList;
     }
 
     /**
