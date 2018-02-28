@@ -149,7 +149,8 @@ public class Main {
         System.out.println("List of Dates (Current Date Included):  " + datesAndToday.size());
 
         ArrayList<String> namesWithFewest = studentsWithFewestAbsences(absences, randomList);
-        //TODO output the names of the students with the fewest absences?
+
+        //output the names of the students with the fewest absences?
         System.out.println("Student(s) With Fewest Absences: " + namesWithFewest);
 
 
@@ -168,8 +169,7 @@ public class Main {
 
     }
 
-    /**
-     * TODO What are the names of the students with the fewest absences?
+    /** What are the names of the students with the fewest absences?
      * pass names list as a parameter
      * look inside list
      **/
@@ -178,14 +178,13 @@ public class Main {
         int smallest = absences.size();
 
         for (int i = 0; i < absences.size(); i++) {
-            for (int number : absences) {
-                if (number < smallest) {
-                    smallest = number;
-                    if (absences.get(i) == smallest) {
-                        smallestNumberList.add(nameList.get(i));
-                    }
-                }
+            if (i < smallest) {
+                smallest = i;
+
+                smallestNumberList.add(nameList.get(i));
+
             }
+
 
         }
         return smallestNumberList;
